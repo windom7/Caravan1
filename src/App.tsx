@@ -1,6 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import imgHeroImage from "./assets/I&P Blue.png";
+import imgHeroImage from "./imports/hero-image.png";
 
 // Configure this value to change the focal point quickly while you iterate.
 // I tested three sensible defaults visually: '30% 50%', '40% 50%', and '60% 50%'.
