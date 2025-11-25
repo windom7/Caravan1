@@ -1,0 +1,15 @@
+Preparing to delete files under src/src/ - archive present at archive/src-src/.
+Files to delete:
+- src/src/App.tsx
+- src/src/main.tsx
+- src/src/index.css
+- src/src/Attributions.md
+- src/src/styles/globals.css
+- src/src/imports/Caravan2.tsx
+- src/src/imports/hero-image.png
+- src/src/imports/svg-scl2dmkop1.ts
+- src/src/assets/7f12ea1300756f144a0fb5daaf68dbfc01103a46.png
+- src/src/components/figma/ImageWithFallback.tsx
+- all files under src/src/components/ui/
+
+If any file isn't found, the delete will skip it and continue. This file is informational and will be removed later.

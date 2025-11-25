@@ -185,14 +185,13 @@
     vertical-align: middle;
   }
 
-  img, video {
-    /* Make media scale responsively to their container instead of being
-       constrained to a fixed percentage. Components can still override
-       with explicit width/height classes when needed. */
-    max-width: 25%;
-    align-content: center;
-    height: auto;
-  }
+img, video {
+  /* Standard responsive behavior */
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 
   button, input, select, optgroup, textarea {
     font: inherit;
@@ -397,6 +396,93 @@
 
   .relative {
     position: relative;
+  }
+
+    /* Header / footer variables consolidated into the main :root (see bottom of file) */
+
+  /* Header logo helper: uses --logo-text-gap so spacing is easily editable */
+  .left-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--logo-text-gap);
+  }
+
+  /* Header logo size consolidated into main :root */
+
+  .left-logo img {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    object-fit: contain;
+    max-width: none; /* ignore any global max-width limits */
+  }
+
+
+  .header-logo {
+    width: auto;
+    height: calc(100% - var(--header-logo-vertical-inset, 10px));
+    max-height: 100%;
+    object-fit: contain;
+    background-color: var(--header-logo-bg);
+    padding: 2px; /* small inset so background shows around image if needed */
+    border-radius: 1rem;
+  }
+
+
+  /* Section title helper for headings like "LATEST NEWS".
+     - --section-title-align: 'center'|'left'|'right' (controls text alignment)
+     - --section-title-max-width: constrains title width and allows centering with margin:auto
+     - --section-title-margin-bottom: space below the title
+     Update these variables in :root or locally where needed. */
+  .section-title {
+    text-align: var(--section-title-align, center);
+    max-width: var(--section-title-max-width, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--section-title-margin-bottom, 3rem);
+  }
+  /* Highlight overlay variables consolidated into main :root */
+
+  .highlight-area {
+    position: relative;
+    z-index: 0;
+  }
+
+  .highlight-shade {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(var(--highlight-color-rgb), var(--highlight-alpha)) 0%, rgba(var(--highlight-color-rgb), calc(var(--highlight-alpha) * 0.6)) 25%, transparent 60%);
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(1);
+    transition: opacity var(--highlight-duration) ease, transform var(--highlight-duration) cubic-bezier(.2,.8,.2,1);
+    border-radius: 0.75rem;
+  }
+
+  /* make the content render above the shade */
+  .highlight-area > *:not(.highlight-shade) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-area:hover .highlight-shade,
+  .highlight-area[data-highlight="true"] .highlight-shade {
+    opacity: 1;
+    transform: scale(var(--highlight-scale));
+  }
+
+  @keyframes highlightIn {
+    from { opacity: 0; transform: scale(0.998); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .highlight-area[data-animate="true"] .highlight-shade {
+    animation: highlightIn var(--highlight-duration) ease forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .highlight-shade { transition: none; animation: none; }
   }
 
   .sticky {
@@ -987,6 +1073,40 @@
   --sidebar-accent-foreground: oklch(.205 0 0);
   --sidebar-border: oklch(.922 0 0);
   --sidebar-ring: oklch(.708 0 0);
+  /* Consolidated site variables (header/footer/hero-related moved here) */
+  --logo-text-gap: 1rem;
+  --logo-size: 200px;
+  --footer-logo-size: 24px;
+  --footer-logo-scale: 1;
+  --footer-logo-translate-x: 0px;
+  --footer-logo-translate-y: 0px;
+  --footer-logo-margin-left: 0px;
+  --footer-logo-margin-right: 0px;
+  --header-logo-target: 48px;
+  --footer-logo-target: 40px;
+
+  /* Caravan/footer animation defaults */
+  --caravan-duration: 14s;
+  --caravan-bob-duration: 3.2s;
+  --caravan-scale: 1;
+  --caravan-footer-height: 120px;
+  --caravan-bottom-offset: 10px;
+
+  /* Footer logo helper defaults */
+  --footer-logo-width: 50px;
+  --footer-logo-height: auto;
+  --footer-logo-scale: 1.1;
+  --footer-logo-translate-x: 0px;
+  --footer-logo-translate-y: 0px;
+
+  /* Header logo background */
+  --header-logo-bg: transparent;
+
+  /* Highlight overlay */
+  --highlight-color-rgb: 212, 175, 55;
+  --highlight-alpha: 0.12;
+  --highlight-duration: 600ms;
+  --highlight-scale: 1.02;
 }
 
 .dark {

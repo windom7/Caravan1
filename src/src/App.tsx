@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import imgHeroImage from "figma:asset/7f12ea1300756f144a0fb5daaf68dbfc01103a46.png";
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,34 +57,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Modern Hero Section */}
-      <section className="relative h-[500px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src={imgHeroImage} 
-            alt="Hero" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A]/70 via-[#1A3329]/50 to-[#D4AF37]/30" />
-        </div>
-        
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-white text-5xl md:text-7xl mb-4 tracking-tight">
-            Hero Image
-          </h1>
-          <p className="text-white/90 text-2xl md:text-3xl mb-8">
-            Caravan 1
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button className="bg-white text-[#1A1A1A] px-8 py-3 rounded-lg hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-lg">
-              LOGIN
-            </button>
-            <button className="bg-[#D4AF37] text-[#1A1A1A] px-8 py-3 rounded-lg hover:bg-[#1A3329] hover:text-white transition-all duration-300 shadow-lg">
-              Get Started
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Hero section removed */}
 
       {/* Latest News Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

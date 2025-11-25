@@ -1,6 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import imgHeroImage from "./assets/I&P Blue.png";
+import { FooterCaravan } from "./components/ui/FooterCaravan";
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,18 +17,20 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#D2B48C]">
+    <div className="min-h-screen bg-[#D2B48C] flex flex-col">
       {/* Modern Header */}
-      <header className="bg-[#1A3329] shadow-lg sticky top-0 z-50">
+      <header className="bg-[#1A3329] shadow-lg sticky top-0 z-50 relative">
+        {/* Army logo pinned to the left edge of the viewport */}
+        <div className="absolute left-0 top-0 bottom-0 pl-4 left-logo flex items-center gap-2">
+          <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-[#1A3329] font-bold">
+            A
+          </div>
+          <span className="text-white text-xl font-bold">ARMY</span>
+        </div>
+
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#D4AF37] rounded-lg flex items-center justify-center">
-                <span className="text-white">A</span>
-              </div>
-              <span className="text-white text-xl">ARMY</span>
-            </div>
-            
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">Home</a>
@@ -58,38 +60,14 @@ export default function App() {
         </div>
       </header>
 
-      {/* Modern Hero Section */}
-      <section className="relative h-[500px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src={imgHeroImage} 
-            alt="Hero" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A]/70 via-[#1A3329]/50 to-[#D4AF37]/30" />
-        </div>
-        
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-white text-5xl md:text-7xl mb-4 tracking-tight">
-            Hero Image
-          </h1>
-          <p className="text-white/90 text-2xl md:text-3xl mb-8">
-            Caravan 1
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button className="bg-white text-[#1A1A1A] px-8 py-3 rounded-lg hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-lg">
-              LOGIN
-            </button>
-            <button className="bg-[#D4AF37] text-[#1A1A1A] px-8 py-3 rounded-lg hover:bg-[#1A3329] hover:text-white transition-all duration-300 shadow-lg">
-              Get Started
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Main content grows so footer stays visible */}
+      <main className="flex-1">
 
       {/* Latest News Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-[#1A1A1A] text-4xl md:text-5xl mb-12">
+      <div className="highlight-area" data-animate="true" data-highlight="true">
+        <div className="highlight-shade" aria-hidden="true" />
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="section-title text-[#1A1A1A] text-4xl md:text-5xl">
           LATEST NEWS
         </h2>
 
@@ -133,53 +111,16 @@ export default function App() {
             </div>
           ))}
         </div>
-      </section>
+        </section>
+      </div>
 
-      {/* Modern Footer */}
-      <footer className="bg-[#1A1A1A] text-white mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#1A3329] rounded-lg flex items-center justify-center">
-                  <span className="text-white">A</span>
-                </div>
-                <span className="text-xl">ARMY</span>
-              </div>
-              <p className="text-white/70 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-[#D4AF37] mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors">Home</a></li>
-                <li><a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors">News</a></li>
-                <li><a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors">About</a></li>
-                <li><a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-[#D4AF37] mb-4">Connect</h3>
-              <div className="flex gap-3">
-                <div className="w-10 h-10 bg-[#1A3329] rounded-lg flex items-center justify-center hover:bg-[#D4AF37] transition-colors cursor-pointer">
-                  <div className="w-5 h-5 bg-white rounded-full" />
-                </div>
-                <div className="w-10 h-10 bg-[#1A3329] rounded-lg flex items-center justify-center hover:bg-[#D4AF37] transition-colors cursor-pointer">
-                  <div className="w-5 h-5 bg-white rounded-full" />
-                </div>
-                <div className="w-10 h-10 bg-[#1A3329] rounded-lg flex items-center justify-center hover:bg-[#D4AF37] transition-colors cursor-pointer">
-                  <div className="w-5 h-5 bg-white rounded-full" />
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 mt-8 pt-8 text-center text-white/50">
-            <p>&copy; 2025 Caravan. All rights reserved.</p>
-          </div>
+      </main>
+
+      {/* Footer (logos and 'ARMY' removed) */}
+      <footer className="bg-[#1A1A1A] text-white">
+        <FooterCaravan />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          {/* intentionally left blank - footer logos and text removed */}
         </div>
       </footer>
     </div>
