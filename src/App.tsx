@@ -17,7 +17,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#D2B48C] flex flex-col">
+    <div className="min-h-screen bg-[#D2B48C] flex flex-col overflow-x-hidden">
       {/* Modern Header */}
       <header className="bg-[#1A3329] shadow-lg sticky top-0 z-50 relative">
         {/* Army logo pinned to the left edge of the viewport */}
@@ -29,28 +29,30 @@ export default function App() {
         </div>
 
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
-              <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">Home</a>
-              <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">News</a>
-              <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">About</a>
-              <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">Contact</a>
-            </nav>
+        <div className="px-4 sm:px-6 lg:px-8 pl-20 sm:pl-24 md:pl-28">
+          <div className="h-16 relative flex items-center justify-end">
+            <div className="flex items-center gap-6 pr-4 sm:pr-6 lg:pr-8">
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex items-center gap-8">
+                <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">Home</a>
+                <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">News</a>
+                <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">About</a>
+                <a href="#" className="text-white hover:text-[#D4AF37] transition-colors">Contact</a>
+              </nav>
 
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden text-white"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="md:hidden pb-4 flex flex-col gap-2">
+            <nav className="md:hidden pb-4 flex flex-col gap-2 items-end text-right pr-4 sm:pr-6 lg:pr-8">
               <a href="#" className="text-white hover:text-[#D4AF37] transition-colors py-2">Home</a>
               <a href="#" className="text-white hover:text-[#D4AF37] transition-colors py-2">News</a>
               <a href="#" className="text-white hover:text-[#D4AF37] transition-colors py-2">About</a>
