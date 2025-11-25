@@ -1,11 +1,6 @@
 export function FooterCaravan() {
   return (
-    <div
-      className="w-full py-8"
-      style={{
-        background: "linear-gradient(to bottom, #D2B48C, #A0826D)",
-      }}
-    >
+    <div className="w-full bg-gradient-to-b from-[#D2B48C] to-[#A0826D] py-8">
       <style>{`
         @keyframes caravan-drive {
           0% {
